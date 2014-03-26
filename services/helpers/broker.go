@@ -65,7 +65,7 @@ func (b ServiceBroker) Push() {
 }
 
 func (b ServiceBroker) Configure() {
-	Expect(Cf("set-env", b.Name, "CONFIG", b.ToJSON())).To(ExitWithTimeout(0, 2*time.Second))
+	Expect(Cf("set-env", b.Name, "CONFIG", b.ToJSON())).To(ExitWithTimeout(0, 10*time.Second))
 	b.Restart()
 }
 
